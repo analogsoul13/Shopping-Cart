@@ -21,7 +21,7 @@ const Home = () => {
         <>
             <header className='flex flex-col justify-center bg-base-300 items-center w-full h-[350px]'>
                 <h1 className='text-4xl sm:text-6xl font-bold'>SHOPPING CART</h1>
-                <p className='text-xs sm:text-lg text-base-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, perferendis.</p>
+                <p className='text-xs text-center p-4 sm:text-lg text-base-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, perferendis.</p>
             </header>
 
             <div className='flex justify-center items-center'>
