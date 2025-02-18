@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Wish = () => {
+  const { wishlist } = useSelector((state) => state.wishReducer)
   return (
     <>
       <div className='flex justify-center'>
@@ -10,29 +12,39 @@ const Wish = () => {
 
       <div className='flex justify-center items-center'>
         <section className="grid grid-rows-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+          {
+            wishlist?.length > 0 ?
+              <>
+                {
+                  wishlist.map(item => (
+                    <div className="card bg-base-100 w-96 shadow-xl">
+                      <figure>
+                        <Link to={`/view/${item?.id}`}>
+                          <img
+                            src={item?.thumbnail}
+                            alt="Shoes" />
+                        </Link>
 
-          <div className="card bg-base-100 w-96 shadow-xl">
-            <figure>
-              <Link to={'/view'}>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes" />
-              </Link>
+                      </figure>
+                      <div className="card-body">
+                        <h2 className="card-title">
+                          {item?.title}
+                        </h2>
+                        <p>${item?.price}</p>
+                        <div className="card-actions justify-end">
+                          <button className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
+                          <button className='btn'><i className="fa-solid fa-xl fa-trash" /></button>
 
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">
-                Shoes!
-                <div className="badge badge-secondary">NEW</div>
-              </h2>
-              <p>Price : 24$</p>
-              <div className="card-actions justify-end">
-                <button className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
-                <button className='btn'><i className="fa-solid fa-xl fa-heart" /></button>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </>
+              :
+              <h3 className='mx-auto'>No items added yet !!</h3>
+          }
 
-              </div>
-            </div>
-          </div>
         </section>
       </div>
 

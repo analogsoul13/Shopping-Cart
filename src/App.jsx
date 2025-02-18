@@ -5,6 +5,7 @@ import Cart from './pages/Cart'
 import Wish from './pages/Wish'
 import View from './pages/View'
 import { Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/wish' element={<Wish/>}/>
     </Routes>
+    <ToastContainer/>
     </>
   )
 }

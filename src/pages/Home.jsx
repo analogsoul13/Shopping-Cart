@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { fetchProductsThunk } from '../redux/slices/productSlice'
+import { addToWishlist } from '../redux/slices/wishSlice'
 
 const Home = () => {
 
@@ -52,8 +53,10 @@ const Home = () => {
                                                 </h2>
                                                 <p>${item?.price}</p>
                                                     <div className="card-actions justify-end">
+                                                        {/* Add to cart Button */}
                                                         <button className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
-                                                        <button className='btn'><i className="fa-solid fa-xl fa-heart" /></button>
+                                                        {/* Wish List Button */}
+                                                        <button onClick={()=>dispatch(addToWishlist(item))} className='btn'><i className="fa-solid fa-xl fa-heart" /></button>
 
                                                     </div>
                                             </div>
