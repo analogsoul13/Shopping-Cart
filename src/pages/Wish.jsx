@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromWishlist } from '../redux/slices/wishSlice'
 
 const Wish = () => {
+  const dispatch = useDispatch()
   const { wishlist } = useSelector((state) => state.wishReducer)
   return (
     <>
@@ -32,8 +34,10 @@ const Wish = () => {
                         </h2>
                         <p>${item?.price}</p>
                         <div className="card-actions justify-end">
+                          {/* Add to cart */}
                           <button className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
-                          <button className='btn'><i className="fa-solid fa-xl fa-trash" /></button>
+                          {/* Remove from wishlist */}
+                          <button onClick={()=>dispatch(removeFromWishlist(item?.id))} className='btn'><i className="fa-solid fa-xl fa-heart-circle-xmark" /></button>
 
                         </div>
                       </div>
