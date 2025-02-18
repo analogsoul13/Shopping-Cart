@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeFromWishlist } from '../redux/slices/wishSlice'
+import { addToCart } from '../redux/slices/cartSlice'
 
 const Wish = () => {
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ const Wish = () => {
                         <p>${item?.price}</p>
                         <div className="card-actions justify-end">
                           {/* Add to cart */}
-                          <button className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
+                          <button onClick={()=>dispatch(addToCart(item))} className='btn'><i className="fa-solid fa-cart-shopping fa-xl" /></button>
                           {/* Remove from wishlist */}
                           <button onClick={()=>dispatch(removeFromWishlist(item?.id))} className='btn'><i className="fa-solid fa-xl fa-heart-circle-xmark" /></button>
 

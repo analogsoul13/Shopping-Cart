@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
+    const {cart} = useSelector((state)=>state.cartReducer)
+    const {wishlist} = useSelector((state)=>state.wishReducer)
     return (
         <>
             <div className="navbar bg-base-100">
@@ -16,7 +19,7 @@ const Header = () => {
                         <div role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <i className="fa-solid fa-cart-shopping fa-xl" />
-                                <span className="badge badge-sm indicator-item">8</span>
+                                <span className="badge badge-sm indicator-item">{cart?.length}</span>
                             </div>
                         </div>
                     </Link>
@@ -25,7 +28,7 @@ const Header = () => {
                         <div role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <i className="fa-solid fa-xl fa-heart" />
-                                <span className="badge badge-sm indicator-item">8</span>
+                                <span className="badge badge-sm indicator-item">{wishlist?.length}</span>
                             </div>
                         </div>
                     </Link>
